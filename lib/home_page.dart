@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
+
   const HomePage({Key? key}) : super(key: key);
 
   @override
@@ -12,138 +13,194 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        backgroundColor: Colors.transparent,
-        brightness: Brightness.dark,
-        title: const Text('Cars',style: TextStyle(color: Colors.red),),
-        actions: [
-          IconButton(
-              onPressed: (){},
-              icon: const Icon(
-                Icons.notifications_none,
-                color: Colors.red,)
-          ),
-          IconButton(
-              onPressed: (){},
-              icon: const Icon(
-                Icons.shopping_cart,
-                color: Colors.red,)
-          )
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(children: [
-          SizedBox(
-            height: 40,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                singleTab(true,"All"),
-                singleTab(false, "Red"),
-                singleTab(false, "Green"),
-                singleTab(false, "Blue"),
-                singleTab(false, "Yellow"),
-              ],),
-          ),
-          const SizedBox(height: 20,),
-          maceItem("assets/images/audiRed.jpg"),
-          maceItem("assets/images/audiGreen.jpg"),
-          maceItem("assets/images/audiBlue.jpg"),
-          maceItem("assets/images/audiYellow.jpg"),
-        ],),
-      ),
-    );
-  }
+        backgroundColor: Colors.grey.shade100,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Container(
+                height: 220,
+                decoration: const BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/images/hotelTitle.jpg'),
+                        fit: BoxFit.cover)),
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                      gradient:
+                          LinearGradient(begin: Alignment.bottomRight, colors: [
+                    Colors.black.withOpacity(0.8),
+                    Colors.black.withOpacity(0.4),
+                  ])),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      const Text(
+                        "Welcome to Hotels",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                        ),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        padding: const EdgeInsets.symmetric(vertical: 3),
+                        margin: const EdgeInsets.symmetric(horizontal: 40),
+                        height: 50,
+                        width: 250,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(25),
+                          color: Colors.white,
+                        ),
+                        child: const TextField(
+                          decoration: InputDecoration(
+                              labelText: "Search",
+                              labelStyle: TextStyle(color: Colors.grey),
+                              border: InputBorder.none,
+                              prefixIcon: Icon(
+                                Icons.search,
+                                color: Colors.grey,
+                              )),
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 30,
+                      ),
 
-  singleTab(bool type, String text) {
-    return AspectRatio(
-      aspectRatio: 2.2/1,
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 10),
-        decoration: BoxDecoration(
-          color: type ? Colors.red : Colors.white,
-          borderRadius: BorderRadius.circular(20),
-        ),
-        child: Center(
-          child: Text(text, style: TextStyle(
-            fontSize: type ? 20 : 15,
-            color: type ? Colors.white : Colors.black,
-          ),),
-        ),
-      ),
-    );
-  }
-
-  maceItem(String image) {
-    return Container(
-      height: 250,
-      margin: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage(image),
-              fit: BoxFit.cover
-          ),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.shade400,
-            blurRadius: 10,
-            offset: const Offset(0,10)
-          )
-        ]
-      ),
-      child: Container(
-        padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          gradient: LinearGradient(
-            begin: Alignment.bottomRight,
-            colors: [
-              Colors.black.withOpacity(0.9),
-              Colors.black.withOpacity(0.6),
-              Colors.black.withOpacity(0.4),
-              Colors.black.withOpacity(0.2),
-            ]
-          )
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("AUDI",style: TextStyle(color: Colors.white,fontSize: 25),),
-                        SizedBox(width: 20,),
-                        Text("Electric",style: TextStyle(color: Colors.red,fontSize: 20),),
-                      ],
-                    )
-                ),
-              ],
-            ),
-            Expanded(child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                const Text("100 \$",style: TextStyle(color: Colors.white,fontSize: 20),),
-                Container(
-                  height: 35,
-                  width: 35,
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Colors.red
+                      // body
+                    ],
                   ),
-                  child: const Icon(Icons.favorite_outline, size: 25,),
                 ),
-              ],
-            ),),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
 
+              // Body
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      "HiTech hotels",
+                      style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          maceItem(image: "hotel6.jpg", title: "Hotel6"),
+                          maceItem(image: "hotel7.jpg", title: "Hotel7"),
+                          maceItem(image: "hotel8.jpg", title: "Hotel8"),
+                          maceItem(image: "hotel9.jpg", title: "Hotel9"),
+                          maceItem(image: "hotel10.jpg", title: "Hotel10"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      "Best hotels",
+                      style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          maceItem(image: "hotel1.jpg", title: "Hotel1"),
+                          maceItem(image: "hotel2.jpg", title: "Hotel2"),
+                          maceItem(image: "hotel3.jpg", title: "Hotel3"),
+                          maceItem(image: "hotel4.jpg", title: "Hotel4"),
+                          maceItem(image: "hotel5.jpg", title: "Hotel5"),
+                        ],
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30,
+                    ),
+                    Text(
+                      "Airport hotels",
+                      style: TextStyle(
+                          color: Colors.grey.shade800,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 20),
+                    ),
+                    const SizedBox(
+                      height: 15,
+                    ),
+                    SizedBox(
+                      height: 200,
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          maceItem(image: "hotel10.jpg", title: "Hotel1"),
+                          maceItem(image: "hotel9.jpg", title: "Hotel2"),
+                          maceItem(image: "hotel4.jpg", title: "Hotel3"),
+                          maceItem(image: "hotel5.jpg", title: "Hotel4"),
+                          maceItem(image: "hotel5.jpg", title: "Hotel5"),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
+        ));
+  }
 
-          ],
+  maceItem({image, title}) {
+    return AspectRatio(
+      aspectRatio: 1 / 1,
+      child: Container(
+        margin: const EdgeInsets.only(right: 10),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            image: DecorationImage(
+              image: AssetImage("assets/images/$image"),
+              fit: BoxFit.cover,
+            )),
+        child: Container(
+          padding: const EdgeInsets.all(20),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
+                Colors.black.withOpacity(0.8),
+                Colors.black.withOpacity(.2),
+              ])),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              Expanded(
+                  child: Text(
+                title,
+                style: const TextStyle(color: Colors.white, fontSize: 20),
+              )),
+              const Icon(
+                Icons.favorite,
+                color: Colors.red,
+              )
+            ],
+          ),
         ),
       ),
     );
