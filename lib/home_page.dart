@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,199 +11,135 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  bool isLogin = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.grey.shade100,
-        body: SingleChildScrollView(
-          child: Column(
-            children: [
-              Container(
-                height: 220,
-                decoration: const BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/images/hotelTitle.jpg'),
-                        fit: BoxFit.cover)),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                      gradient:
-                          LinearGradient(begin: Alignment.bottomRight, colors: [
-                    Colors.black.withOpacity(0.8),
-                    Colors.black.withOpacity(0.4),
-                  ])),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      const Text(
-                        "Welcome to Hotels",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 30,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(vertical: 3),
-                        margin: const EdgeInsets.symmetric(horizontal: 40),
-                        height: 50,
-                        width: 250,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(25),
-                          color: Colors.white,
-                        ),
-                        child: const TextField(
-                          decoration: InputDecoration(
-                              labelText: "Search",
-                              labelStyle: TextStyle(color: Colors.grey),
-                              border: InputBorder.none,
-                              prefixIcon: Icon(
-                                Icons.search,
-                                color: Colors.grey,
-                              )),
-                        ),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-
-                      // body
-                    ],
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/party.jpg'),
+              fit: BoxFit.cover
+            )
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(20),
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                colors: [
+                  Colors.black.withOpacity(0.8),
+                  Colors.black.withOpacity(0.5),
+                  Colors.black.withOpacity(0.4),
+                  Colors.black.withOpacity(0.2),
+                ]
+              )
+            ),
+            child: Column(
+              children: [
+                const SizedBox(height: 30,),
+                Column(children: const [
+                  Text("Welcome to HiTech party",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                        fontWeight: FontWeight.bold
+                    ),
                   ),
-                ),
-              ),
-              const SizedBox(
-                height: 20,
-              ),
+                  SizedBox(height: 20,),
+                  Text("Your action is your opportunity",
+                    style: TextStyle(
+                        color: Colors.grey,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w300
+                    ),
+                  ),
+                  SizedBox(height: 550,),
+                ],),
 
-              // Body
-              Container(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+                isLogin ?
+
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Text(
-                      "HiTech hotels",
-                      style: TextStyle(
-                          color: Colors.grey.shade800,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          maceItem(image: "hotel6.jpg", title: "Hotel6"),
-                          maceItem(image: "hotel7.jpg", title: "Hotel7"),
-                          maceItem(image: "hotel8.jpg", title: "Hotel8"),
-                          maceItem(image: "hotel9.jpg", title: "Hotel9"),
-                          maceItem(image: "hotel10.jpg", title: "Hotel10"),
-                        ],
+                    Container(
+                      height: 50,
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            colors: [
+                              Colors.deepOrange.withOpacity(0.8),
+                              Colors.deepOrange.withOpacity(0.6),
+                              Colors.deepOrange.withOpacity(0.4),
+                              Colors.deepOrange.withOpacity(0.2),
+                            ]
+                        ),
+                        borderRadius: BorderRadius.circular(50),
+                        color: Colors.deepOrange,
                       ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Best hotels",
-                      style: TextStyle(
-                          color: Colors.grey.shade800,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          maceItem(image: "hotel1.jpg", title: "Hotel1"),
-                          maceItem(image: "hotel2.jpg", title: "Hotel2"),
-                          maceItem(image: "hotel3.jpg", title: "Hotel3"),
-                          maceItem(image: "hotel4.jpg", title: "Hotel4"),
-                          maceItem(image: "hotel5.jpg", title: "Hotel5"),
-                        ],
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 30,
-                    ),
-                    Text(
-                      "Airport hotels",
-                      style: TextStyle(
-                          color: Colors.grey.shade800,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    SizedBox(
-                      height: 200,
-                      child: ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: [
-                          maceItem(image: "hotel10.jpg", title: "Hotel1"),
-                          maceItem(image: "hotel9.jpg", title: "Hotel2"),
-                          maceItem(image: "hotel4.jpg", title: "Hotel3"),
-                          maceItem(image: "hotel5.jpg", title: "Hotel4"),
-                          maceItem(image: "hotel5.jpg", title: "Hotel5"),
-                        ],
+                      child: const Center(
+                        child: Text("Start Up", style: TextStyle(color: Colors.white),),
                       ),
                     ),
                   ],
-                ),
-              )
-            ],
-          ),
-        ));
-  }
+                )
 
-  maceItem({image, title}) {
-    return AspectRatio(
-      aspectRatio: 1 / 1,
-      child: Container(
-        margin: const EdgeInsets.only(right: 10),
-        decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(20),
-            image: DecorationImage(
-              image: AssetImage("assets/images/$image"),
-              fit: BoxFit.cover,
-            )),
-        child: Container(
-          padding: const EdgeInsets.all(20),
-          decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              gradient: LinearGradient(begin: Alignment.bottomRight, colors: [
-                Colors.black.withOpacity(0.8),
-                Colors.black.withOpacity(.2),
-              ])),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Expanded(
-                  child: Text(
-                title,
-                style: const TextStyle(color: Colors.white, fontSize: 20),
-              )),
-              const Icon(
-                Icons.favorite,
-                color: Colors.red,
-              )
-            ],
+                :
+
+                Row(
+
+                  children: [
+                    Expanded(
+                      child: Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                              begin: Alignment.topRight,
+                              colors: [
+                                Colors.red.withOpacity(0.8),
+                                Colors.red.withOpacity(0.6),
+                                Colors.red.withOpacity(0.4),
+                                Colors.red.withOpacity(0.2),
+                              ]
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.red,
+                        ),
+                        child: const Center(
+                          child: Text("Google+", style: TextStyle(color: Colors.white),),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(width: 20,),
+                    Expanded(
+                      child:Container(
+                        height: 50,
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topRight,
+                            colors: [
+                              Colors.blue.withOpacity(0.8),
+                              Colors.blue.withOpacity(0.6),
+                              Colors.blue.withOpacity(0.4),
+                              Colors.blue.withOpacity(0.2),
+                            ]
+                          ),
+                          borderRadius: BorderRadius.circular(50),
+                          color: Colors.blue,
+                          ),
+                        child: const Center(
+                          child: Text("Facebook+", style: TextStyle(color: Colors.white),),
+                        ),
+                    ),)
+                  ],
+                )
+            ],),
           ),
         ),
-      ),
-    );
+        );
   }
 }
