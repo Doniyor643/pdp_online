@@ -10,281 +10,422 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
+  bool onTheme = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: onTheme? Colors.grey : Colors.grey.shade800,
         appBar: AppBar(
           elevation: 0,
-          backgroundColor: const Color(0xFF263b55),
-          title: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-            const SizedBox(
-              width: 210,
-              child: Image(image: AssetImage('assets/images/amazon_logo.jpg'),
-                height: 50,
-                fit: BoxFit.cover,),
-            ),
-              SizedBox(
-                width: 100,
-                child: Row(
-                  children: [
-                    IconButton(
-                        onPressed: (){},
-                        icon: const Icon(Icons.mic, color: Colors.white,)),
-                    IconButton(
-                        onPressed: (){},
-                        icon: const Icon(Icons.shopping_cart, color: Colors.white,)),
-                  ],
-                )
-              )
-          ],),
+          backgroundColor: onTheme? Colors.white : Colors.black,
+          title: const Text('facebook',style: TextStyle(fontWeight: FontWeight.bold, color: Colors.blue,fontSize: 30),),
+          actions: [
+            IconButton(
+                onPressed: (){
+                  setState(() {
+                    onTheme = !onTheme;
+                  });
+                },
+                icon: Icon(Icons.opacity,color: onTheme? Colors.blue : Colors.blue.shade200,))
+          ],
         ),
-      drawer: const Drawer(),
-      body: Container(
-        color: Colors.grey,
-        child: Column(children: [
-          // Search
+      body: ListView(
+        children: [
+
           Container(
-            padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
-            color: const Color(0xFF263b55),
-            child: Container(
-              height: 50,
-              padding: const EdgeInsets.only(left: 10,right: 10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
-                border: Border.all(color: Colors.grey, width: 1),
-              ),
-              child: Row(
-                children: const [
-                  Expanded(
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: 'Search',
-                          icon: Icon(Icons.search),
-                        ),
-                      )
-                  ),
-                  Icon(Icons.camera_alt, color: Color(0xFF263b55),)
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-              child: ListView(
+            padding: const EdgeInsets.only(top: 10,left: 10,right: 10),
+            height: 120,
+            color:  onTheme? Colors.white : Colors.black,
+            child: Column(children: [
+              Expanded(child: Row(
                 children: [
                   Container(
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    color: Colors.blueGrey,
+                    width: 45,
                     height: 45,
-                    child: Row(children: const [
-                      Icon(Icons.location_on,color: Colors.white,),
-                      SizedBox(height: 5,),
-                      Text('Republic of Uzbekistan',style: TextStyle(color: Colors.white),)
-                    ],),
-                  ),
-                  // adds
-                  SizedBox(
-                    height: 140,
-                    child: Row(children: [
-                      Expanded(
-                          child: Container(
-                            color: Colors.white,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.only(
-                                  topRight: Radius.circular(70),
-                                  bottomRight: Radius.circular(70),
-                                ),
-                                color: Colors.white,
-                                image: DecorationImage(
-                                  image: AssetImage('assets/images/progMobile.jpg'),
-                                  fit: BoxFit.cover,
-                                )
-                              ),
-                        ),
-                          )
-                      ),
-                      Container(
-                        padding: const EdgeInsets.all(20),
-                        color: Colors.white,
-                        child: const Center(child: Text('We ship 45million products'),),
-                      ),
-                    ],),
-                  ),
-                  const SizedBox(height: 8,),
-                  // Sign in
-                  Container(
-                    height: 160,
-                    padding: const EdgeInsets.only(left: 10,right: 10),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text('Your action is your opportunity'),
-                        const SizedBox(height: 15,),
-
-                        Container(
-                          height: 50,
-                          width: double.infinity,
-                          color: Colors.deepOrange,
-                          child: const Center(
-                              child: Text("Sign in",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16),
-                              )
-                          ),
-                        ),
-                        const SizedBox(height: 15,),
-                        const Text('Create an account',style: TextStyle(fontSize: 16, color: Colors.blue),),
-
-                      ],
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/programming1.jpg'),
+                        fit: BoxFit.cover
+                      )
                     ),
                   ),
-                  const SizedBox(height: 8,),
-                  //Deal
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text('Deal of the day',style: TextStyle(fontSize: 22),),
-                        Image(
-                          height: 240,
-                          width: double.infinity,
-                          image: AssetImage('assets/images/work.jpg'),
-                          fit: BoxFit.cover,
+                  const SizedBox(width: 10,),
+                  Expanded(
+                      child: Container(
+                        height: 46,
+                        padding: const EdgeInsets.only(left: 15,right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(23),
+                          border: Border.all(
+                            width: 1,
+                            color: Colors.grey
+                          )
                         ),
-                        SizedBox(height: 8,),
-                        Text('Good work good result',style: TextStyle(fontSize: 16),),
-                        SizedBox(height: 8,),
-                        Text('\$300.0 - \$500.0',style: TextStyle(fontSize: 16),)
-
-                    ],),
-                  ),
-                  const SizedBox(height: 8,),
-                  //Best
-                  Container(
-                    padding: EdgeInsets.all(16),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                      const Text("Best in electronics",style: TextStyle(fontSize: 22),),
-                      const SizedBox(height: 16,),
-                      SizedBox(
-                        height: MediaQuery.of(context).size.width,
-                        child: Row(
-                          children: [
-                            Expanded(
-                              child: Column(
-                                children: const [
-                                  Expanded(
-                                    child: Image(
-                                      image: AssetImage('assets/images/programming1.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Expanded(
-                                    child: Image(
-                                      image: AssetImage('assets/images/programming2.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                            const SizedBox(width: 8,),
-                            Expanded(
-                              child: Column(
-                                children: const [
-                                  Expanded(
-                                    child: Image(
-                                      image: AssetImage('assets/images/programming3.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  ),
-                                  SizedBox(height: 8,),
-                                  Expanded(
-                                    child: Image(
-                                      image: AssetImage('assets/images/programming4.jpg'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                  )
-                                ],
-                              ),
-                            ),
-                        ],),
-                      )
-                    ],),
-                  ),
-                  const SizedBox(height: 8,),
-
-                  //Home work
-                  Container(
-                    padding: const EdgeInsets.all(16),
-                    color: Colors.white,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        const Text("Home work",style: TextStyle(fontSize: 22),),
-                        const SizedBox(height: 16,),
-                        Container(
-                          color: Colors.white,
-                          height: MediaQuery.of(context).size.width,
-                          child: Column(children: [
-                            Expanded(
-                              child: Container(
-                                color: Colors.blue,
-                                width: MediaQuery.of(context).size.width,
-                                child: const Image(
-                                  image: AssetImage('assets/images/programming4.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 8,),
-                            Expanded(child: Row(children: [
-                              Expanded(
-                                child: Container(
-                                  height: MediaQuery.of(context).size.width,
-                                  color: Colors.red,
-                                  child: const Image(
-                                    image: AssetImage('assets/images/programming1.jpg'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(width: 8,),
-                              Expanded(child: Container(
-                                height: MediaQuery.of(context).size.width,
-                                color: Colors.green,
-                                child: const Image(
-                                  image: AssetImage('assets/images/programming3.jpg'),
-                                  fit: BoxFit.cover,
-                                ),
-                                ),
-                              )
-                            ],)
-                            )
-                          ],
+                        child: const TextField(
+                          decoration: InputDecoration(
+                            hintText: "What's on your mind ?",
+                            border: InputBorder.none,
+                            hintStyle: TextStyle(color: Colors.grey)
                           ),
-                        )
-                      ],),
+                        ),
+                      )
+                  )
+                ],
+              )),
+
+              Expanded(child: Row(
+                children: [
+                  Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.video_call, color: Colors.red,),
+                          const SizedBox(width: 5,),
+                          Text('Live',style: TextStyle(color: !onTheme? Colors.white : Colors.black,),)
+                        ],
+                      )),
+                  Container(
+                    margin: const EdgeInsets.only(top:15,bottom: 15),
+                    width: 1,
+                    color: Colors.grey,
                   ),
-
-
-                  const SizedBox(height: 8,),
+                  Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.photo, color: Colors.green,),
+                          const SizedBox(width: 5,),
+                          Text('Photo',style: TextStyle(color: !onTheme? Colors.white : Colors.black,),)
+                        ],
+                      )),
+                  Container(
+                    margin: const EdgeInsets.only(top:15,bottom: 15),
+                    width: 1,
+                    color: Colors.grey,
+                  ),
+                  Expanded(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Icon(Icons.location_on, color: Colors.red,),
+                          const SizedBox(width: 5,),
+                          Text('Check in',style: TextStyle(color: !onTheme? Colors.white : Colors.black,),)
+                        ],
+                      ))
                 ],
               ))
-        ],),
+            ],),
+          ),
+
+          Container(
+            padding: const EdgeInsets.only(top: 10,bottom: 10),
+            margin: const EdgeInsets.only(top: 10),
+            height: 200,
+            color:   onTheme? Colors.white : Colors.black,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                const SizedBox(width: 10,),
+                makeStory(
+                  storyImage: 'assets/images/programming2.jpg',
+                  userImage: 'assets/images/programming2.jpg',
+                  userName: 'Name'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/programming1.jpg',
+                    userImage: 'assets/images/programming3.jpg',
+                    userName: 'Name'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/programming2.jpg',
+                    userImage: 'assets/images/programming1.jpg',
+                    userName: 'Name'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/programming3.jpg',
+                    userImage: 'assets/images/programming4.jpg',
+                    userName: 'Name'
+                ),
+                makeStory(
+                    storyImage: 'assets/images/programming4.jpg',
+                    userImage: 'assets/images/programming1.jpg',
+                    userName: 'Name'
+                ),
+            ],),
+          ),
+
+          makeFeed(
+            userName: 'User Name',
+            userImage: 'assets/images/programming1.jpg',
+            feedTime: '12:05',
+            feedText: 'Feed Text: udhede eedwodkw debchdch dcjdcdo eidejdow 93ddkwodk399dw wdwdo',
+            feedImage: 'assets/images/programming2.jpg',
+            feedImage2: 'assets/images/programming1.jpg',
+          ),
+          makeFeed(
+            userName: 'User Name',
+            userImage: 'assets/images/programming2.jpg',
+            feedTime: '12:05',
+            feedText: 'Feed Text: udheded dkw debchdch dcjdcdo',
+            feedImage: 'assets/images/programming4.jpg',
+            feedImage2: 'assets/images/programming2.jpg',
+          ),
+          makeFeed(
+            userName: 'User Name',
+            userImage: 'assets/images/programming3.jpg',
+            feedTime: '12:05',
+            feedText: 'Feed Text: ede eedwodkw debchdch dcwodk399dw wdwdo',
+            feedImage: 'assets/images/programming1.jpg',
+            feedImage2: 'assets/images/programming3.jpg',
+          ),
+          makeFeed(
+            userName: 'User Name',
+            userImage: 'assets/images/programming4.jpg',
+            feedTime: '12:05',
+            feedText: 'Feed Text: dch dcjdcdo eidejdow 93ddkwodk399dw wdwdo',
+            feedImage: 'assets/images/programming2.jpg',
+            feedImage2: 'assets/images/programming4.jpg',
+          ),
+        ],
       ),
         );
+  }
+
+  Widget makeStory({storyImage,userImage,userName}) {
+    return AspectRatio(
+        aspectRatio: 1.3/2,
+        child: Container(
+          margin: const EdgeInsets.only(right: 10),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(15),
+            image: DecorationImage(
+              image: AssetImage(storyImage),
+              fit: BoxFit.cover,
+            )
+          ),
+          child: Container(
+            padding: const EdgeInsets.all(10),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(15),
+              gradient: LinearGradient(
+                begin: Alignment.bottomRight,
+                colors: [
+                  Colors.black.withOpacity(0.9),
+                  Colors.black.withOpacity(0.1),
+                ]
+              )
+          ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: 40,
+                  width: 40,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    border: Border.all(color: Colors.blue, width: 2),
+                    image: DecorationImage(
+                      image: AssetImage(userImage),
+                      fit: BoxFit.cover,
+                    )
+                  ),
+                ),
+                Text(userName,style: const TextStyle(color: Colors.white),)
+              ],
+            ),
+        ),
+      )
+    );
+  }
+
+  makeFeed({userName,userImage,feedTime,feedImage,feedImage2,feedText}){
+    return Container(
+      margin: const EdgeInsets.only(top: 10),
+      color: onTheme? Colors.white : Colors.black,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          //header
+          Container(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: Column(children: [
+              const SizedBox(height: 10,),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(children: [
+                    Container(
+                      height: 50,
+                      width: 50,
+                      decoration: BoxDecoration(
+                        shape: BoxShape.circle,
+                        image: DecorationImage(
+                          image: AssetImage(userImage),
+                          fit: BoxFit.cover,
+                        )
+                      ),
+                    ),
+                    const SizedBox(width: 10,),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(userName,style: TextStyle(color: Colors.grey.shade900,fontWeight: FontWeight.bold),),
+                        const SizedBox(height: 5,),
+                        Text(feedTime,style: const TextStyle(color: Colors.grey,),),
+                      ],
+                    )
+                  ],),
+                  IconButton(
+                      onPressed: (){},
+                      icon: const Icon(Icons.more_horiz,size: 30,color: Colors.grey,))
+                ],
+              ),
+              const SizedBox(height: 20,),
+              Text(feedText,style: TextStyle(color: Colors.grey.shade600,height: 1.5,letterSpacing: .7),)
+
+            ],),
+          ),
+          const SizedBox(height: 15,),
+          //photo
+          Row(
+            children: [
+              Expanded(
+                child: Container(
+                  height: 240,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                      image: AssetImage(feedImage),
+                      fit: BoxFit.cover,
+                    )
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Container(
+                  height: 240,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage(feedImage2),
+                        fit: BoxFit.cover,
+                      )
+                  ),
+                ),
+              ),
+
+            ],
+          ),
+          const SizedBox(height: 15,),
+          //likes
+          Container(
+            padding: const EdgeInsets.only(left: 10,right: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(children: [
+                  makeLike(),
+                  Transform.translate(
+                      offset: const Offset(-5,0),
+                    child: makeLove(),
+                  ),
+                  const SizedBox(width: 5,),
+                  Text('2.5k',style: TextStyle(fontSize: 15,color: Colors.grey.shade800),)
+
+                ],),
+                const Text('400 comments',)
+            ],),
+          ),
+          const SizedBox(height: 15,),
+          //like, comment, share
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              mikeLikeButton(isActive: true),
+              mikeCommentButton(),
+              mikeShareButton(),
+            ],
+          ),
+        ],),
+    );
+  }
+
+  makeLike() {
+    return Container(
+      width: 25,
+      height: 25,
+      decoration: BoxDecoration(
+        color: Colors.blue,
+        shape: BoxShape.circle,
+        border: Border.all(color: Colors.white)
+      ),
+      child: const Center(
+        child: Icon(Icons.thumb_up,size: 12,color: Colors.white,),
+      ),
+    );
+  }
+
+  makeLove() {
+    return Container(
+      width: 25,
+      height: 25,
+      decoration: BoxDecoration(
+          color: Colors.red,
+          shape: BoxShape.circle,
+          border: Border.all(color: Colors.white)
+      ),
+      child: const Center(
+        child: Icon(Icons.favorite,size: 12,color: Colors.white,),
+      ),
+    );
+  }
+
+  mikeLikeButton({isActive}) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.thumb_up,size: 18,color: isActive ? Colors.blue : Colors.grey),
+            const SizedBox(width: 5,),
+            Text('Like', style: TextStyle(color: isActive ? Colors.blue : Colors.grey),)
+          ],
+        ),
+      ),
+    );
+  }
+
+  mikeCommentButton() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.chat,size: 18,color: Colors.grey),
+            SizedBox(width: 5,),
+            Text('Comments', style: TextStyle(color: Colors.grey),)
+          ],
+        ),
+      ),
+    );
+  }
+
+  mikeShareButton() {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 20,vertical: 5),
+      child: Center(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: const [
+            Icon(Icons.share,size: 18,color: Colors.grey),
+            SizedBox(width: 5,),
+            Text('Share', style: TextStyle(color: Colors.grey),)
+          ],
+        ),
+      ),
+    );
   }
 }
