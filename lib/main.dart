@@ -1,25 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:pdp_online/home_page.dart';
+import 'package:pdp_online/sign_page.dart';
 
 void main() async{
-
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-
-  runApp(EasyLocalization(
-    supportedLocales: const [
-      Locale('en','US'),
-      Locale('ru','RU'),
-      Locale('uz','UZ'),
-      Locale('fr','FR'),
-      Locale('uk','UK'),
-      Locale('ko','KO'),
-      Locale('ja','JA'),
-    ],
-      fallbackLocale: const Locale('en','US'),
-      path: 'assets/translations',
-      child: const MyApp()));
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -30,9 +14,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: const HomePage(),
-      localizationsDelegates: context.localizationDelegates,
-      supportedLocales: context.supportedLocales,
-      locale: context.locale,
+      routes: {
+        HomePage.id: (context) => const HomePage(),
+        SignPage.id: (context) => const SignPage(),
+      },
     );
   }
 }
