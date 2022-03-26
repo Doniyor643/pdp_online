@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pdp_online/sign_page.dart';
-
+import 'package:hive/hive.dart';
+import 'package:pdp_online/dates_page.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:pdp_online/textFields.dart';
 
 class HomePage extends StatefulWidget {
   static const String id = 'home_page';
@@ -10,228 +12,199 @@ class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
 }
+
 class _HomePageState extends State<HomePage> {
+  final userNameController = TextEditingController();
+  final passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Column(children: [
-          Container(
-            height: 300,
-            width: double.infinity,
-            decoration: BoxDecoration(
-              gradient: LinearGradient(
-                begin: Alignment.bottomRight,
-                  end: Alignment.topLeft,
-                colors: [
-                  Colors.green,
-                  Colors.green.shade900,
-                ],
-              ),
-              borderRadius: const BorderRadius.only(
-                  bottomRight: Radius.circular(40),
-                  bottomLeft: Radius.circular(40)
-              ),
-              boxShadow: [BoxShadow(
-                color: Colors.green.withOpacity(0.6),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: const Offset(0,3)
-              )]
-            ),
-            child: Container(
-              padding: const EdgeInsets.only(right: 25,bottom: 50),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.end,
+      backgroundColor: Colors.indigo.shade900,
+      body: Container(
+        height: double.infinity,
+        width: double.infinity,
+        padding: const EdgeInsets.all(30),
+        decoration: const BoxDecoration(
+            gradient: LinearGradient(
+          colors: [Colors.black87, Colors.black54],
+          begin: Alignment.topCenter,
+          end: Alignment.bottomCenter,
+        )),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
-                    Text('Registration',
-                      style: TextStyle(
+                  SizedBox(
+                    height: 300,
+                    width: double.infinity,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Container(
+                          height: 100,
+                          width: 100,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(15),
+                            image: const DecorationImage(
+                              image: AssetImage('assets/images/Ukraine.gif'),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        Text(
+                          'Welcome to Ukraine',
+                          style: GoogleFonts.didactGothic(
+                            fontSize: 30,
+                            color: Colors.white,
+                          ),
+                        ),
+                        Text(
+                          'peace is a great blessing',
+                          style: GoogleFonts.didactGothic(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(height: 30),
+                  textEnter(
+                      controller: userNameController,
+                      icon: const Icon(
+                        Icons.email_outlined,
+                        color: Colors.grey,
+                      ),
+                      text: 'User name'),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  textEnter(
+                      controller: passwordController,
+                      icon: const Icon(
+                        Icons.lock_outline_rounded,
+                        color: Colors.grey,
+                      ),
+                      text: 'Password'),
+                  TextButton(
+                      onPressed: () {},
+                      child: Text(
+                        'Forget Password?',
+                        style: GoogleFonts.didactGothic(
+                          color: Colors.grey,
+                          //fontWeight: FontWeight.bold
+                        ),
+                      )),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  GestureDetector(
+                    onTap: () {
+                      _doLogin();
+                    },
+                    child: Container(
+                      height: 75,
+                      width: 75,
+                      decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          gradient: LinearGradient(colors: [
+                            Colors.blue.shade800,
+                            Colors.blue.shade400
+                          ])),
+                      child: const Icon(
+                        Icons.arrow_forward,
+                        size: 50,
                         color: Colors.white,
-                        fontSize: 40,
-                        fontWeight: FontWeight.bold
-                      ),),
-                      Text('Create login and password',
-                        style: TextStyle(
-                            color: Colors.white70,
-                            fontSize: 14,
-                            fontWeight: FontWeight.w500
-                        ),)
-                  ],),
-                  const SizedBox(width: 10,),
-                  Container(
-                    height: 65,
-                    width: 5,
-                    color: Colors.white,
+                      ),
+                    ),
                   )
                 ],
               ),
-            ),
-          ),
-          const SizedBox(height: 35,),
-          Container(
-            height: 55,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25.5),
-              boxShadow: [BoxShadow(
-                color: Colors.grey.withOpacity(0.2),
-                spreadRadius: 20,
-                blurRadius: 18
-              )]
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 35),
-            //padding: const EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Login',
-                prefixIcon: const Icon(Icons.person),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.5),
-                ),
+              const SizedBox(
+                height: 100,
               ),
-            ),
-          ),
-          //const SizedBox(height: 35,),
-          Container(
-            height: 55,
-            decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(25.5),
-                boxShadow: [BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 20,
-                    blurRadius: 18
-                )]
-            ),
-            margin: const EdgeInsets.symmetric(vertical: 10,horizontal: 35),
-            //padding: const EdgeInsets.all(10),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Password',
-                prefixIcon: const Icon(Icons.key_rounded),
-                border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(25.5),
-                ),
-              ),
-            ),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-            TextButton(
-                onPressed: (){},
-                child: const Text('Forgot password?')),
-              const SizedBox(width: 30,)
-          ],),
-          Center(
-            child: Container(
-              height: 50,
-              width: 200,
-              decoration: BoxDecoration(
-                color: Colors.indigo,
-                borderRadius: BorderRadius.circular(25),
-                  boxShadow: [BoxShadow(
-                      color: Colors.indigo.withOpacity(0.2),
-                      spreadRadius: 20,
-                      blurRadius: 18
-                  )]
-              ),
-              child: const Center(
-                  child: Text('LOG IN',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 20
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    "Don't have an account?",
+                    style: TextStyle(color: Colors.grey),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pushNamed(context, CreateAccount.id);
+                    },
+                    child: const Text(
+                      "SIGN IN",
+                      style: TextStyle(color: Colors.blue),
                     ),
-                )
-              ),
-            ),
-          ),
-          const SizedBox(height: 35,),
-          const Center(
-            child: Text('Or connect using',
-            style: TextStyle(color: Colors.grey),),
-          ),
-          const SizedBox(height: 15,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-              height: 40,
-              decoration: const BoxDecoration(
-                color: Colors.indigo,
-                borderRadius: BorderRadius.all(Radius.circular(10))
-              ),
-              child: Row(
-                  children: const [
-                    SizedBox(width: 15,),
-                    Text('f',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                      fontWeight: FontWeight.bold),),
-                    SizedBox(width: 15,),
-                    Text('facebook',
-                      style: TextStyle(
-                          color: Colors.white,
-                      fontSize: 20),),
-                    SizedBox(width: 15,),
-                  ],
-                ),
-
-            ),
-              const SizedBox(width: 15,),
-              Container(
-                height: 40,
-                decoration: const BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.all(Radius.circular(10))
-                ),
-                child: Row(
-                  children: const [
-                    SizedBox(width: 15,),
-                    Text('G',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 25,
-                          fontWeight: FontWeight.bold),),
-                    SizedBox(width: 15,),
-                    Text('Google',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20),),
-                    SizedBox(width: 15,),
-                  ],
-                ),
-
+                  )
+                ],
               )
-          ],),
-          const SizedBox(height: 25,),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Text("Don't have an accaunt?",
-              style: TextStyle(
-                color: Colors.grey
-              ),),
-              TextButton(
-                  onPressed: (){
-                    Navigator.pushNamed(context, SignPage.id);
-                  },
-                  child: const Text("Sign in",
-                    style: TextStyle(
-                        color: Colors.lightBlue
-                    ),),)
-            ],)
-        ],),
+            ],
+          ),
+        ),
       ),
     );
   }
+
+  Widget textEnter({controller, icon, text}) {
+    return TextField(
+        controller: controller,
+        style: const TextStyle(color: Colors.cyan),
+        decoration: InputDecoration(
+          counterStyle: const TextStyle(color: Colors.grey),
+            prefixIcon: icon,
+            hintText: text,
+            hintStyle: GoogleFonts.didactGothic(color: Colors.grey),
+            enabledBorder: const UnderlineInputBorder(
+                borderSide: BorderSide(color: Colors.grey))));
+  }
+
+  //////////////////////  Save style String  //////////////////////////////////
+  void _doLogin() {
+    final String name = userNameController.text.toString().trim();
+    final String password = passwordController.text.toString().trim();
+
+    var box = Hive.box('pdp_online');
+
+    // Ma'lumotlarni yozish
+    box.put('name', name);
+    box.put('password',password);
+
+    // Malumotlarni o'qish
+    String id = box.get('name');
+    String pw = box.get('password');
+  }
+
+  //////////////////////  Save style Object  //////////////////////////////////
+  // void doLogin() {
+  //   final String name = userNameController.text.toString().trim();
+  //   final String password = passwordController.text.toString().trim();
+  //
+  //   var user = User(username: name, password: password);
+  //   var box = Hive.box('pdp_online');
+  //
+  //   // Ma'lumotlarni yozish
+  //   box.put('user', user.toJson());
+  //
+  //   // Ma'lumotlarni o'qish
+  //   var user2 = User.fromJson(box.get('user'));
+  //
+  //   print(user2.password);
+  //   print(user2.username);
+  //
+  // }
+
 }
+
+
+
